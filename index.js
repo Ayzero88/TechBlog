@@ -59,6 +59,7 @@ app.use(routeSwitch);
 // home page
 app.get('/', async(req, res) => {
     try {
+         
             let index = 0; // Display the first blog by default
        
             const result  = await axios.get('http://localhost:4000/blogs');
@@ -72,11 +73,19 @@ app.get('/', async(req, res) => {
                 isFirst: index === 0,
                 isLast: blogs.length === 1 // If there's only one blog, it's also the last
             });
+
+     
         
     } catch (error) {
-        console.error(error);
-      
-        sendAlert(res, 'Error fetching blogs');
+        let index = 0
+            res.render('index.ejs', {
+                myPath: 'index',
+                blogs: [],
+                blog: null, // Only pass the first blog initially
+                currentIndex: index,
+                isFirst: index === 0,
+                isLast: blogs.length === 1 // If there's only one blog, it's also the last
+            });
     };
    
 });
