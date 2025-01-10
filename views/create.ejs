@@ -1,0 +1,43 @@
+<%- include('partials/header.ejs') %>
+
+<% if (blog){%>
+<main class="create-blog-wrap">
+    <h1>Make changes to your blog</h1>
+    <form action="/update" method="post">
+
+            <input type="hidden" name="index" value="<%= currentIndex %>">
+            <input type="hidden" name="id" value="<%= blog.id %>">
+
+            <input type="text" placeholder=" Blog Title" name="blogTitle" id="blogName" value="<%= blog.title %>"/>
+            <input type="text" placeholder="Author" name="author" id="author" value="<%= blog.author %>" disabled/>
+            <input type="text" placeholder="Link to more details." name="webLink" id="blogName" value="<%= blog.webLink %>"/>
+            <textarea name="blogContent" id="blogContent" cols="30" rows="10" placeholder="Write your blog content here."><%= blog.content%></textarea>
+            <button type="submit"><img src="/Images/uiImages/edit.svg" alt="star"/> Publish </button>
+
+            
+    </form>
+    
+</main>
+
+<% } else { %>
+
+    <main class="create-blog-wrap">
+        <h1>Create a blog of your advancement in tech</h1>
+        <form action="/publish" method="post">
+    
+                
+                <input type="text" placeholder=" Blog Title" name="blogTitle" id="blogName"/>
+                <input type="text" placeholder="Author" name="author" id="author"/>
+                <input type="text" placeholder="Link to more details." name="webLink" id="blogName"/>
+                <textarea name="blogContent" id="blogContent" cols="30" rows="10" placeholder="Write your blog content here."></textarea>
+                <button type="submit"><img src="/Images/uiImages/create.svg" alt="star"/>Create Post</button>
+    
+    
+        </form>
+        
+    </main>
+    
+<% } %>
+
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techy Blog</title>
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Rubik+Vinyl&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&family=Josefin+Slab:ital,wght@0,400;0,500;1,400;1,500&family=Mulish:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+   
+        <div class="row custom-row">
+            <div class="custom-nav-wrapper col-lg-12">
+               
+                <div class="custom-nav-title-img">
+                    <img src="/Images/uiImages/logo.svg" alt="logo"/>
+                    <h1>Techy Blog</h1>
+                </div>
+                <ul>
+                    <li><img src="/Images/uiImages/home.svg" alt="home"/> <a href="/">Home</a></li>
+                    <li><img src="/Images/uiImages/create.svg" alt="star"/><a href="/create">Create</a></li>
+                    <li><img src="/Images/uiImages/support.svg" alt="support"/><a href="/contact">Contact</a></li>
+                </ul>
+            </div>
+            <% if(myPath === 'index'){%>
+            <div class="custom-blog-search-bar col-lg-12">
+                <div class="custom-input-group">
+                    <input type="text" placeholder="Search Blog" name="authorsName"  id="searchInput">
+                    <a href="#" onclick="searchBlog()" ><img src="/images/uiImages/search.svg" alt="search"/></a>
+                </div>
+            </div>
+            <% } %>
+         
+        </div>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            
+            const searchBlog= ()=> {
+        
+                const input = $('#searchInput').val();
+                if (input) {
+                    // Redirect to the search route with the query parameter
+                    window.location.href = `/search?authorsName=${encodeURIComponent(input)}`;
+                } else {
+                    alert('Please enter an author name to search');
+                }
+            }
+            </script>
+ 
+    

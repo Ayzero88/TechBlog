@@ -1,0 +1,58 @@
+
+
+<% if (blog){ %>
+   
+    <div class="blog-wrap">
+        <h2 class="blog-title">
+            <%= blog.title %>
+        </h2>
+        <div>
+            <h4 class="blog-date">
+                <span>Posted:</span> <%= blog.date %>
+            </h4>
+
+            <div class="blog-content-wrapper">
+                <h4>Advancements:</h4>
+                <p class="blog-content">
+                    <%= blog.content %>
+                </p>
+            </div>
+            <div class="blog-author">
+                <span>Author:</span> 
+                <p><%= blog.author %></p>
+            </div>
+
+            <p class="blog-link">
+                <span> <img src="/Images/uiImages/link.svg" alt="link"/> See Details: &nbsp; </span>
+                <a href="#"><%= blog.webLink %></a></div>
+            </p>
+
+            <div class="blog-btn">
+                <% if (!isFirst) { %>
+                  <a href="/move?index=<%= currentIndex - 1 %>">
+                    <img src="/Images/uiImages/left arrow.svg" alt="Previous">
+                  </a>
+                <% } %>
+                
+                <% if (!isLast) { %>
+                  <a href="/move?index=<%= currentIndex + 1 %>">
+                    <img src="/Images/uiImages/right arrow.svg" alt="Next">
+                  </a>
+                <% } %>
+
+                <% if(myPath === 'fetch'){%>
+                <a href="/edit?index=<%= currentIndex %>">
+                    <img src="/Images/uiImages/edit.svg" alt="Edit">
+                </a>
+
+                <a href="/delete?id=<%= blog.id %>">
+                    <img src="/Images/uiImages/delete.svg" alt="Delete">
+                </a>
+                <% } %>
+              </div>
+
+    </div>
+
+    <% } else{ %>
+        <h2>No blogs found.</h2>
+    <% } %>
