@@ -62,7 +62,7 @@ app.get('/', async(req, res) => {
          
             let index = 0; // Display the first blog by default
        
-            const result  = await axios.get('http://localhost:4000/blogs');
+            const result  = await axios.get('https://lagospostalcodeapi.onrender.com/blogs');
             const data = result.data;
             blogs = [...data]
             res.render('index.ejs', {
@@ -163,7 +163,7 @@ app.post('/publish',  async(req, res)=>{
         blogs.push(blogData);
     
         try {
-            await axios.post('http://localhost:4000/blogs', blogData);
+            await axios.post('https://lagospostalcodeapi.onrender.com/blogs', blogData);
             res.redirect('/create');
         } catch (error) {
             console.error('Error saving blog:', error.message);
@@ -238,7 +238,7 @@ app.post('/update', async(req, res) => {
 
     //   // update postalCodeAPI
 
-      await axios.patch(`http://localhost:4000/blogs/${blogid}`, updatedBlog);
+      await axios.patch(`https://lagospostalcodeapi.onrender.com/blogs/${blogid}`, updatedBlog);
       sendAlert(res, 'Successfully updated');
 
        // Redirect to the updated blog view
@@ -260,7 +260,7 @@ app.post('/update', async(req, res) => {
         try {
             
                 // Forward the deletion request to the service on port 4000
-                const deleteResponse = await axios.delete(`http://localhost:4000/blogs/${blogid}`);
+                const deleteResponse = await axios.delete(`https://lagospostalcodeapi.onrender.com/blogs/${blogid}`);
                 
                 // Use the response from the server to display the message
                 // res.status(200).send(deleteResponse.data.message);
